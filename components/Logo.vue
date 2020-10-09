@@ -45,9 +45,9 @@
 <template  v-else>
 <div class="bg-teal-300"> 
 <a href="#"> {{$auth.user.name}} </a>
-<a href="#"> CART (0)</a>
+<nuxt-link :to="{name:'cart'}"> CART ({{cartCount}})</nuxt-link>
 <a href="#"> Orders </a>
-<nuxt-link href="#"> Logout </nuxt-link>
+
 </div>
 </template>
 
@@ -61,7 +61,8 @@ export default{
 
 computed: {
   ...mapGetters({
-      categories: 'categories'
+      categories: 'categories',
+      cartCount: 'cart/cartCount'
   })
 }
 

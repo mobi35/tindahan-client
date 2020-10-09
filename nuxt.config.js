@@ -30,8 +30,7 @@ export default {
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules:[
-    '@nuxtjs/axios',
+  modules: [  '@nuxtjs/axios',
     '@nuxtjs/auth'
   ],
   auth:{
@@ -54,7 +53,7 @@ export default {
   },
   
   axios:{
-    baseURL: 'http://localhost:8000/api'
+    baseURL: 'http://localhost:8001/api'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
