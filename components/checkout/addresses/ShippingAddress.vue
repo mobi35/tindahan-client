@@ -1,14 +1,14 @@
 <template>
-<div> 
+<div>
  <h1>Ships To</h1>
     <template v-if="selecting">
-        <ShippingAddressSelector :addresses="addresses" :selectedAddress="selectedAddress" @click="switchAddress"/>
+        <ShippingAddressSelector :addresses="addresses" :selectedAddress="selectedAddress" @click="addressSelected"/>
     </template>
      <template v-else-if="creating">
          <ShippingAddressCreator @cancel="creating = false" @created="created"/>
     </template>
-   <template v-else> 
-    <div class="bg-green-200"> 
+   <template v-else>
+    <div class="bg-green-200">
     <template  v-if="selectedAddress">
                  {{selectedAddress.name}} <br>
                 {{selectedAddress.address_1}} <br>
@@ -20,14 +20,14 @@
     </template>
 
 <div>
-    
+
 </div>
 
 <a href="" @click.prevent="selecting = true"> Change Shipping Address </a>
 <a href="" @click.prevent="creating = true"> Add an address</a>
  </div>
 
-  
+
 </template>
 
 
@@ -64,11 +64,15 @@ computed:{
 },
 watch:{
     selectedAddress(address){
-        this.selecting = false
+       // this.selecting = false
         this.$emit('input',address.id)
     }
 },
 methods:{
+addressSelected(address){
+  this.switchAddress(address)
+  this.selecting = false
+},
 switchAddress(address){
     this.selectedAddress = address
 },

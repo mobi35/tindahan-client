@@ -1,5 +1,5 @@
 <template>
-<div> 
+<div>
 
   <template v-for="category in categories.data">
     <template v-if="category.children != null && category.children.length">
@@ -9,11 +9,11 @@
       >
 
       {{ category.name }}
-        
+
       </nuxt-link>
 
         <template>
-          <nuxt-link class="bg-teal-200" v-for="child in category.children" :key="child.slug" :to="{ name : 'categories-slug', params: {slug:category.slug}}"> 
+          <nuxt-link class="bg-teal-200" v-for="child in category.children" :key="child.slug" :to="{ name : 'categories-slug', params: {slug:category.slug}}">
 
               {{child.name}}
 
@@ -28,7 +28,7 @@
       >
 
       {{ category.name }}
-        
+
       </nuxt-link>
     </template>
 
@@ -36,17 +36,19 @@
 
   </template>
 
-<template v-if="!$auth.loggedIn"> 
+
+
+<template v-if="!$auth.loggedIn">
 <nuxt-link :to="{name : 'auth-signin'}">
   Sign in
 </nuxt-link>
 </template>
 
 <template  v-else>
-<div class="bg-teal-300"> 
+<div class="bg-teal-300">
 <a href="#"> {{$auth.user.name}} </a>
 <nuxt-link :to="{name:'cart'}"> CART ({{cartCount}})</nuxt-link>
-<a href="#"> Orders </a>
+<nuxt-link :to="{name:'orders'}"> Orders </nuxt-link>
 
 </div>
 </template>

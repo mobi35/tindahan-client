@@ -53,7 +53,7 @@ export default {
   },
   
   axios:{
-    baseURL: 'http://localhost:8000/api'
+    baseURL: 'http://ecommerce-server.test/api'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
