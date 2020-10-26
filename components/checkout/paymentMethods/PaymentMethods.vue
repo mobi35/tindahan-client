@@ -6,6 +6,7 @@
     </template>
      <template v-else-if="creating">
     Create Payment methods
+    <PaymentMethodCreator @cancel="creating = false" @added="created"/>
     </template>
    <template v-else>
     <div class="bg-green-200">
@@ -20,7 +21,7 @@
 
 </div>
 
-<a href="" @click.prevent="selecting = true"> Change Payment Method </a>
+<a href="" @click.prevent="selecting = true" v-if="paymentMethods.length"> Change Payment Method </a>
 <a href="" @click.prevent="creating = true"> Add an Payment Method</a>
  </div>
 
@@ -31,15 +32,16 @@
 
 <script>
 import PaymentMethodSelector from './PaymentMethodSelector'
-//import ShippingAddressCreator from './ShippingAddressCreator'
+import PaymentMethodCreator from './PaymentMethodCreator'
 export default {
   components:{
-PaymentMethodSelector
+PaymentMethodSelector,
+PaymentMethodCreator
   },
     data(){
         return {
             localPaymentMethods: this.paymentMethods,
-            selectedPaymentMethods: null,
+            selectedPaymentMethod: null,
             selecting:false,
             creating: false
         }
@@ -62,7 +64,7 @@ computed:{
 watch:{
     selectedPaymentMethod(paymentMethod){
        // this.selecting = false
-        this.$emit('input',paymentMethod.id)
+       this.$emit('input',paymentMethod.id)
     }
 },
 methods:{

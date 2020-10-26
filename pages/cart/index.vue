@@ -13,7 +13,7 @@
       </div>
 
       <div v-if="!empty">
-         <nuxt-link :to="{name : 'checkout'}"> Checkout </nuxt-link> 
+         <nuxt-link :to="{name : 'checkout'}"> Checkout </nuxt-link>
       </div>
 
   </div>
@@ -33,7 +33,9 @@ computed :{
         products:'cart/products',
         changed: 'cart/changed'
     })
-}
+},middleware:[
+  'redirectGuest'
+],
 }
 </script>
 

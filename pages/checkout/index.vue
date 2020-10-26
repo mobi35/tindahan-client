@@ -4,7 +4,7 @@
       <div>
         <ShippingAddress :addresses="addresses" v-model="form.address_id"/>
 
-    <PaymentMethods :payment-methods="paymentMethods" v-model="form.payment_method_id"/>
+        <PaymentMethods :payment-methods="paymentMethods" v-model="form.payment_method_id"/>
       </div>
 
 
@@ -96,7 +96,9 @@ computed:{
         }
     }
 
-},
+},middleware:[
+  'redirectGuest'
+],
 methods:{
     ...mapActions({
         setShipping: 'cart/setShipping',

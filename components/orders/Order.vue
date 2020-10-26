@@ -12,12 +12,12 @@
               slug: variation.product.slug
             }
            }">
-          {{variation.product.name}} ({{variation.name}}) - {{variation.type}}
+         <p>  {{variation.product.name}} ({{variation.name}}) - {{variation.type}} </p>
            </nuxt-link>
 
            </div>
-           <template v-if="moreProducts > 0">
-             and {{moreProducts}} more
+           <template v-if="moreProducts > 0" >
+            <p>  and {{moreProducts}} more</p>
            </template>
 
 
@@ -32,10 +32,14 @@
 <script>
 import OrderStatusPaymentFailed from '@/components/orders/statuses/OrderStatus-payment_failed'
 import OrderStatusPending from '@/components/orders/statuses/OrderStatus-pending.vue'
+import OrderStatusProcessing from '@/components/orders/statuses/OrderStatus-processing.vue'
+import OrderStatusCompleted from '@/components/orders/statuses/OrderStatusCompleted.vue'
 export default{
   components:{
     'payment_failed' : OrderStatusPaymentFailed,
-    'pending' : OrderStatusPending
+    'pending' : OrderStatusPending,
+    'processing' : OrderStatusProcessing,
+    'completed' : OrderStatusCompleted
   },
   data(){
     return {

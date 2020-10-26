@@ -7,6 +7,11 @@ export default {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' }
     ],
+    script:[
+      {
+        src: 'https://js.stripe.com/v3/'
+      }
+    ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
@@ -18,6 +23,11 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
+    '~/plugins/swipe.js'
+   ,
+    { src: '~/plugins/carousel3D.client.js', ssr: false },
+    { src: '~/plugins/select.js', ssr: false },
+    { src: '~/plugins/vue-good-table', ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -35,7 +45,7 @@ export default {
   ],
   auth:{
     strategies:{
-      local:{ 
+      local:{
         endpoints: {
           login:{
             url:'auth/login',
@@ -51,7 +61,7 @@ export default {
       }
     }
   },
-  
+
   axios:{
     baseURL: 'http://ecommerce-server.test/api'
   },
