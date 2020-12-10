@@ -2,15 +2,15 @@
     <table class="bg-gray-200">
         <tbody>
             <tr v-for="paymentMethod in paymentMethods" :key="paymentMethod.id">
-                <td>
-                    <p :class="{ 'bg-green-400' : paymentMethod.id === selectedPaymentMethod.id}">
-                        {{paymentMethod.card_type}} <br>
+                <td class="mb-6 italic mt-2  ">
+                    <p  class="p-4  rounded-md  " :class="{ 'bg-green-400' : paymentMethod.id === selectedPaymentMethod.id}">
+                        {{paymentMethod.card_type}} :  **** **** **** {{selectedPaymentMethod.last_four}} <br>
 
                     </p>
                     </td>
-                <td><a href="" @click.prevent="$emit('click',paymentMethod)">
+                <td><a class="bg-gray-500 text-white p-2 rounded-md" href="" @click.prevent="$emit('click',paymentMethod)">
 
-                    Pay with this
+                   use
 
 
                     </a> </td>

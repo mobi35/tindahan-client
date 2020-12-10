@@ -1,19 +1,32 @@
 <template>
+
 <div>
+<br/><br/><br/><br/><br/>
 <div v-if="orders.length">
-<table class="table-fixed">
-  <tbody>
+
+
+<div class="md:px-32 py-8 w-full">
+  <div class="shadow overflow-hidden rounded border-b border-gray-200">
+    <table class="min-w-full bg-white">
+      <thead class="bg-gray-800 text-white">
+        <tr>
+          <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Date Order</th>
+          <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Total</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Order</th>
+          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Status</th>
+        </tr>
+      </thead>
+    <tbody class="text-gray-700">
 <Order v-for="order in orders" :key="order.id" :order="order"/>
-</tbody>
-</table>
 
-
+    </tbody>
+    </table>
+  </div>
+</div>
 </div>
 
-
-
 <div v-else>
-
+<p>No orders</p>
 </div>
 
 

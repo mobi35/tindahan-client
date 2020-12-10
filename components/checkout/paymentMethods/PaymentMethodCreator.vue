@@ -4,8 +4,23 @@
 
   </div>
 
-  <button :disabled="storing">Store Card</button>
-    <button @click.prevent="$emit('cancel')">Cancel</button>
+
+
+<div class="flex mx-8  justify-around">
+<button :disabled="storing" class=" w-full px-10 mt-6 font-medium text-white uppercase bg-green-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                      <span class="ml-2 mt-5px">Save</span>
+                    </button>
+<div class="mx-2"></div>
+
+<button  @click.prevent="$emit('cancel')" class=" w-full px-10 py-3 mt-6 font-medium text-white uppercase bg-red-800 rounded-full shadow item-center hover:bg-gray-700 focus:shadow-outline focus:outline-none">
+                      <span class="ml-2 mt-5px">Cancel</span>
+                    </button>
+
+</div>
+
+
+
+
 </form>
 
 

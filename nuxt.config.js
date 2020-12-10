@@ -5,7 +5,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'bagwis' }
     ],
     script:[
       {
@@ -50,6 +50,11 @@ export default {
           login:{
             url:'auth/login',
             method: 'post',
+            propertyName: 'meta.token'
+          },
+          logout:{
+            url:'auth/logout',
+            method:'post',
             propertyName: 'meta.token'
           },
           user:{

@@ -1,5 +1,5 @@
 export const state = () => ({
-  message : 'jakolot'
+  message : ''
 })
 
 export const getters = {

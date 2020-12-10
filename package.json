@@ -18,7 +18,6 @@
     "swiper": "5.4.5",
     "vue-awesome-swiper": "^4.1.1",
     "vue-carousel-3d": "^0.2.0",
-    "vue-good-table": "^2.21.1",
     "vue-select": "^3.10.8"
   },
   "devDependencies": {

@@ -3,7 +3,7 @@ if(!app.$auth.loggedIn){
   return redirect({
     name: 'auth-signin',
     query:{
-      redirect:route.fullPath
+      redirect: route.fullPath
     }
   }
   )

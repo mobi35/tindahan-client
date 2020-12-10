@@ -1,11 +1,8 @@
 <template>
-  <div>
- <tr>
-      <td>{{order.id}}</td>
-      <td>{{order.created_at}}</td>
-      <td>{{order.subtotal}}</td>
-       <td>><div v-for="variation in products" :key="variation.id">
-         {{variation.product}}
+    <tr>
+        <td class="w-1/3 text-left py-3 px-4">{{order.created_at}}</td>
+        <td class="w-1/3 text-left py-3 px-4">{{order.subtotal}}</td>
+        <td class="text-left py-3 px-4">  <div v-for="variation in products" :key="variation.id">
          <nuxt-link :to="{
             name:'products-slug',
             params:{
@@ -19,14 +16,12 @@
            <template v-if="moreProducts > 0" >
             <p>  and {{moreProducts}} more</p>
            </template>
+ </td>
+        <td class="text-left py-3 px-4">   <component :is="order.status"/>  </td>
+      </tr>
 
 
-           </td>
-        <td>
-          <component :is="order.status"/>
-          </td>
-    </tr>
-  </div>
+
 </template>
 
 <script>

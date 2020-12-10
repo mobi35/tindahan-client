@@ -1,12 +1,30 @@
 <template>
-    <div class="bg-red-400 w-64 flex flex-col items-center"> 
-    <p>product</p>
-    <nuxt-link :to="link">    <div class="image h-20 w-20 bg-white "></div></nuxt-link>
 
-    <nuxt-link :to="link">{{product.name}}</nuxt-link>
-    <p>{{product.description}}</p>
-    <p>{{product.price}}</p>
+
+    <div class="card  justify-center  p-10 bg-white rounded-lg shadow-2xl">
+      <div class="prod-title">
+        <p class="md:text-sm text-2xl uppercase text-gray-900 font-bold">   <nuxt-link :to="link">{{product.name}}</nuxt-link></p>
+        <p class="uppercase text-sm text-gray-400">
+         Gods keeper clothing
+        </p>
+      </div>
+      <div class="prod-img">
+         <nuxt-link :to="link">
+        <img src="https://unsplash.com/photos/IJjfPInzmdk/download?force=true&w=1920"
+             class="w-full object-cover object-center" />
+        </nuxt-link>
+
+      </div>
+      <div class="prod-info grid gap-10">
+
+        <div class="flex flex-col md:flex-row justify-between items-center text-gray-900">
+          <p class="font-bold text-xl">{{product.price}}</p>
+
+        </div>
+      </div>
     </div>
+
+
 </template>
 
 <script>

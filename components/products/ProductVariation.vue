@@ -1,18 +1,21 @@
 <template>
-  
+
   <div class="field">
       <label for="">
-          {{type}}
+          {{variations}}
+          <template>
+            <button  :class="type" class="border-2 border-gray-300 ml-1  rounded-full w-6 h-6 focus:outline-none"></button>
+          </template>
       </label>
       <select :value="selectedVariationId"  @change="changed($event,type)">
           <option value="">Choose</option>
-         <option 
+         <option
          v-for="variation in variations" :disabled="!variation.in_stock" :value="variation.id" :key="variation.id
-       
+
          ">
          {{variation.name}}
-           
-           
+
+
            <template v-if="variation.price_varies">
             ({{variation.price}})
          </template>
@@ -20,9 +23,11 @@
                    <template v-if="!variation.in_stock">
             (out of stock)
          </template>
-       
+
          </option>
       </select>
+
+
   </div>
 
 </template>
@@ -40,7 +45,7 @@ props:{
     },
     value:{
         required:false,
-        fefault:''
+        default:''
     }
 },
 methods:{

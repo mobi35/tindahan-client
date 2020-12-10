@@ -8,13 +8,13 @@
          <ShippingAddressCreator @cancel="creating = false" @created="created"/>
     </template>
    <template v-else>
-    <div class="bg-green-200">
-    <template  v-if="selectedAddress">
+    <div class="p-4 mb-6 italic mt-2 rounded-md bg-green-200">
+    <template   v-if="selectedAddress">
                  {{selectedAddress.name}} <br>
-                {{selectedAddress.address_1}} <br>
-                {{selectedAddress.city}} <br>
-                {{selectedAddress.postal_code}} <br>
-                {{selectedAddress.country.name}} <br>
+                {{selectedAddress.address_1}}  ,
+                {{selectedAddress.city}}  <br>
+                {{selectedAddress.postal_code}}<br>
+                {{selectedAddress.country.name}}
     </template>
     </div>
     </template>
@@ -23,7 +23,7 @@
 
 </div>
 
-<a href="" @click.prevent="selecting = true"> Change Shipping Address </a>
+<a href="" @click.prevent="selecting = true"> Change Shipping Address </a> <br>
 <a href="" @click.prevent="creating = true"> Add an address</a>
  </div>
 
