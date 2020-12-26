@@ -10,7 +10,7 @@
       </div>
       <div class="prod-img">
          <nuxt-link :to="link">
-        <img src="https://unsplash.com/photos/IJjfPInzmdk/download?force=true&w=1920"
+        <img src="~/assets/camo.jpg"
              class="w-full object-cover object-center" />
         </nuxt-link>
 

@@ -27,7 +27,7 @@ export default {
    ,
     { src: '~/plugins/carousel3D.client.js', ssr: false },
     { src: '~/plugins/select.js', ssr: false },
-    { src: '~/plugins/vue-good-table', ssr: false }
+ 
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -68,7 +68,7 @@ export default {
   },
 
   axios:{
-    baseURL: 'http://ecommerce-server.test/api'
+    baseURL: 'http://127.0.0.1:8000/api'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

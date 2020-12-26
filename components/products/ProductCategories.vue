@@ -12,7 +12,7 @@
       - {{ category.name }}
 
       </nuxt-link>
-           <br/>
+         
         <template>
           <nuxt-link class="ml-4 text-gray" v-for="child in category.children" :key="child.slug" :to="{ name : 'categories-slug', params: {slug:child.slug}}">
 
@@ -30,14 +30,14 @@
 
      - {{ category.name }}
 
-      </nuxt-link> <br>
+      </nuxt-link> 
     </template>
-
+<br>
 
 
   </template>
 
-</div>
+</div> 
 
 </template>
 <script>

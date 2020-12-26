@@ -1,7 +1,9 @@
 <template>
  <div>
      <GKCarousel/>
-
+   <BestSeller/>
+    <Gallery/>
+     <Instagram/>
  </div>
 </template>
 

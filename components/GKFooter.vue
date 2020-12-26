@@ -39,7 +39,7 @@
     </div>
   </div>
   <div class="h-10 p-2 text-center bg-white w-full bottom-0 absolute tracking-wider">
-©️ 2020 God Knows Clothing
+©️ 2020 Gods Keeper Clothing
   </div>
 
 </div>
