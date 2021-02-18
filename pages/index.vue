@@ -1,7 +1,7 @@
 <template>
  <div>
      <GKCarousel/>
-   <BestSeller/>
+   <BestSeller :product="product"/>
     <Gallery/>
      <Instagram/>
  </div>
@@ -16,6 +16,11 @@ import Gallery from '~/components/Social/Gallery'
 import Instagram from '~/components/Social/Instagram'
 
 export default{
+   data(){
+    return {
+      product : []
+    }
+  },
 components: {
  GKCarousel,BestSeller,Gallery,Instagram
 },
@@ -23,9 +28,22 @@ computed: {
   ...mapGetters({
       categories: 'categories'
   })
+},
+
+async asyncData({ app}){
+    let response = await app.$axios.$get(`showvar`)
+      
+    return {
+        product : response.data,
+
+    }
 }
 
 }
+
+
+
+
 
 </script>
 

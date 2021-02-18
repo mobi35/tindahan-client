@@ -1,5 +1,5 @@
 <template>
-  <p></p>
+  <h1>gago</h1>
 </template>
 
 <script>

@@ -9,12 +9,12 @@
         <ul class=" w-full md:flex  md:items-center" >
           <img class=" cursor-pointer logo   mb-2 mt-2 h-16 my-1 xl:mr-12    md:mr-4 mx-auto md:mx-0 mobile:h-8" src="~/assets/logo.png" alt=""/>
          <div id="menu" ref="menu" class=" mobile:p-2   mobile:h-full z-20 mobile:rounded-br-lg mobile:pt-12 mobile:text-2xl mobile:top-0 mobile:bg-black mobile:w-4/5 mobile:fixed mobile:transform mobile:-translate-x-full  h-auto     md:flex   duration-200 ease-in  font-sans xl:text-lg text-xs  tracking-gkwide" >
-          <li class="border-gray-100 border-t  border-b  md:mr-4  md:pl-2 md:pr-1 md:py-2  transition duration-500 ease-in-out  md:border md:border-transparent rounded-sm    text-center md:hover:border-white md:border-white"><nuxt-link to="/">HOME</nuxt-link></li>
-
-                   <li class="border-gray-100 border-b md:mr-4  md:pr-1 md:py-2 pl-2 transition duration-500 ease-in-out  md:border md:border-transparent rounded-sm   text-center md:hover:border-white" ref="product" > <nuxt-link to="/categories">SHOP</nuxt-link>  </li>
-
-          <li class="border-gray-100 border-b  md:mr-4 md:pr-1 md:py-2 pl-2 transition duration-500 ease-in-out  md:border md:border-transparent rounded-sm    text-center md:hover:border-white"><nuxt-link to="/About">ABOUT</nuxt-link></li>
-          <li class="border-gray-100 border-b  md:mr-4 md:pr-1 md:py-2 pl-2 transition duration-500 ease-in-out  rounded-sm   text-center md:border md:border-transparent md:hover:border-white "><nuxt-link to="/Contact">CONTACT</nuxt-link></li>
+       
+          <li :class="{ 'md:border-white' : $route.name == 'index'}" class="border-gray-100 border-b  md:mr-4 md:pr-1 md:py-2 pl-2 transition duration-500 ease-in-out  md:border md:border-transparent rounded-sm   text-center md:hover:border-white  "><nuxt-link to="/">HOME</nuxt-link></li>
+          <li :class="{ 'md:border-white' : $route.name == 'categories-slug' || $route.name == 'product-slug'}" class="border-gray-100 border-b  md:mr-4 md:pr-1 md:py-2 pl-2 transition duration-500 ease-in-out  md:border md:border-transparent rounded-sm   text-center md:hover:border-white" ref="product" > <nuxt-link to="/categories">SHOP</nuxt-link>  </li>
+          <li :class="{ 'md:border-white' : $route.name == 'about'}" class="border-gray-100 border-b  md:mr-4 md:pr-1 md:py-2 pl-2 transition duration-500 ease-in-out  md:border md:border-transparent rounded-sm   text-center md:hover:border-white"><nuxt-link to="/About">ABOUT</nuxt-link></li>
+          <li :class="{ 'md:border-white' : $route.name == 'contact'}" class="border-gray-100 border-b  md:mr-4 md:pr-1 md:py-2 pl-2 transition duration-500 ease-in-out  md:border md:border-transparent rounded-sm   text-center md:hover:border-white "><nuxt-link to="/Contact">CONTACT</nuxt-link></li>
+       
         </div>
         </ul>
         <label for="hamburger"  class="md:hidden absolute z-50">
@@ -66,7 +66,9 @@ computed: {
   ...mapGetters({
       categories: 'categories',
       cartCount: 'cart/cartCount'
-  })
+  }), currentRouteName() {
+        return this.$route.name;
+    }
 },
   methods:{
     chance(event){

@@ -14,7 +14,8 @@ export default {
 props:{
   price : {
     required : true,
-    type : String
+    type : String,
+    default:""
   },
   quantity : {
      required:false,
@@ -24,7 +25,11 @@ props:{
 },
 computed:{
   priceTimesQuantity(){
-  let total = Number(this.price.substr(1,10)) * this.quantity
+     this.price.substr(1,10).replace(',', '');
+  let total =  this.price.substr(1,10).replace(',', '') * this.quantity
+
+ // console.log( Number(this.formatPrice(this.price.substr(1,10).replace(',', '')) ))
+  console.log(total.toLocaleString('en-PH', { style: 'currency', currency: 'PHP' }));
   return total.toLocaleString('en-PH', { style: 'currency', currency: 'PHP' })
   }
 },

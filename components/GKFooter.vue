@@ -11,10 +11,20 @@
   </div>
   </div>
   <div class="flex justify-center mt-4">
-    <div class="px-2 cursor-pointer"> <img class=" border-white border-2 rounded-full p-2 h-16 logo" src="https://img.icons8.com/ios/50/000000/instagram-new.png"/>
+
+    <div class="px-2 cursor-pointer"> 
+      <a href="https://www.instagram.com/gk_clothing_shop/"> 
+      <img class=" border-white border-2 rounded-full p-2 h-16 logo" src="https://img.icons8.com/ios/50/000000/instagram-new.png"/>
+   </a>
     </div>
     <div class="px-2 cursor-pointer">
+     <a href="https://www.facebook.com/gkclothing2019">
     <img class="border-white border-2 rounded-full p-2 h-16 logo" src="https://img.icons8.com/ios-filled/50/000000/facebook-f.png"/>
+   </a> 
+
+
+
+
   </div>
   <div class="px-2 cursor-pointer">
     <img class="border-white border-2 rounded-full p-2 h-16 logo" src="https://img.icons8.com/ios-glyphs/60/000000/youtube-play.png"/>

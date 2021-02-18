@@ -3,20 +3,23 @@
   <div>
 
   </div>
-      <div class="my-24 flex  ">
+      <div class="my-24  grid grid-flow-col auto-cols-max ">
 
-        <div class="sm:1/2 md:w-1/5">
+        <div class=" sm:1/2  md:w-40">
 
         <ProductCategories/>
-      </div>
-          <br>
-        <div class="flex flex-wrap w-full justify-between px-6 ">
-          <div class="block w-full py-4">
+        </div>
+
+          <div class="block col-auto py-4">
            <BreadCrumb/>
-           </div>
-       <div class="sm:w-full md:w-1/6 mx-2 py-2 " v-for="product in products" :key="product.slug">
-         <Product :product="product"/>
-       </div>
+          
+         <div class="flex w-full justify-start pr-2 ">
+        
+           <div class="sm:w-full md:w-1/6 py-2  " v-for="product in products" :key="product.slug">
+             <Product :product="product"/>
+        </div>
+        </div>
+
 </div>
 
 
@@ -69,16 +72,16 @@ export default {
             currentPage:0,
             parameter: '',
             baseURL:'',
-            title: 'GodsKeeper - '
+            title: 'GK - '
         }
     },head(){
          return {
-        title: this.title + this.parameter ,
+        title: typeof this.parameter != 'undefined' ? this.title + this.parameter : this.title + 'Categories'   ,
         meta: [
           {
-            hid: 'description',
-            name: 'description',
-            content: 'Home page description'
+            hid: 'GK Product Categories',
+            name: 'category',
+            content: 'GK Product Category page'
           }
         ]
       }
@@ -86,6 +89,7 @@ export default {
     },
 async asyncData({ params, app}){
     let response = await app.$axios.$get(`products?category=${params.slug}`)
+    console.log(response.data);
     return {
         products : response.data,
         next: response.links.next,
@@ -123,22 +127,17 @@ methods:{
  let url = `${this.baseURL}?category=${this.parameter}&page=${currentPage}`
 
    await this.$axios.$get(url).then((res) => {
-     console.log(url)
      this.products = res.data
      this.next = res.links.next
        this.previous = res.links.prev
      this.currentPage = res.meta.current_page
      this.lastPage = res.meta.last_page
-
-
-
     })
 
 
   }, async goPage(page){
     if(this.currentPage != page){
       let url = `${this.baseURL}?category=${this.parameter}&page=${page}`
-      console.log(url);
        await this.$axios.$get(url).then((res) => {
 
      this.products = res.data

@@ -1,7 +1,7 @@
 <template>
 
 
-<div  class="mx-10 text-sm">
+<div  class="mx-10 text-sm whitespace-nowrap">
   <template v-for="category in categories.data">
     <template v-if="category.children != null && category.children.length">
       <nuxt-link
@@ -9,10 +9,10 @@
       :key="category.slug"
       >
 
-      - {{ category.name }}
+      {{ category.name }}
 
       </nuxt-link>
-         
+         <br/>
         <template>
           <nuxt-link class="ml-4 text-gray" v-for="child in category.children" :key="child.slug" :to="{ name : 'categories-slug', params: {slug:child.slug}}">
 
@@ -28,11 +28,12 @@
       :key="category.slug"
       >
 
-     - {{ category.name }}
+      {{ category.name }}
 
       </nuxt-link> 
+             <br/>
     </template>
-<br>
+
 
 
   </template>

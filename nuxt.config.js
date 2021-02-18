@@ -1,11 +1,16 @@
 export default {
+  responsiveLoader: {
+    placeholder: true,
+    name: 'img/[hash:7]-[width].[ext]',
+    quality: 20 // choose a lower value if you want to reduce filesize further
+  },
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    title: 'cartclient',
+    title: 'Godskeeper Clothing',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'bagwis' }
+      { hid: 'description', name: 'description', content: 'Welcome to Godskeeper Clothing Clothing' }
     ],
     script:[
       {
@@ -13,7 +18,7 @@ export default {
       }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/logo.ico' }
     ]
   },
 
@@ -27,7 +32,7 @@ export default {
    ,
     { src: '~/plugins/carousel3D.client.js', ssr: false },
     { src: '~/plugins/select.js', ssr: false },
- 
+    { src: '~/plugins/image-magnifier.js', ssr: false },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -41,7 +46,8 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [  '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'nuxt-responsive-loader'
   ],
   auth:{
     strategies:{
@@ -68,7 +74,7 @@ export default {
   },
 
   axios:{
-    baseURL: 'http://127.0.0.1:8000/api'
+    baseURL: 'http://localhost:8000/api'
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

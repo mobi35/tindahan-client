@@ -7,13 +7,15 @@
   <div class="font-sans">
   <div class="max-w-sm mx-auto px-6">
     <div class="relative flex flex-wrap">
+           <img style="margin:auto;" src="/logo.ico"/>
       <div class="w-full relative">
         <div class="mt-6">
            <div class="mb-5 pb-1border-b-2 text-center font-base text-gray-700">
 
           </div>
           <div class="text-center font-semibold text-black">
-           Godskeeper Clothing
+           Godskeeper Clothing <br>
+      
           </div>
 
           <form class="mt-8" action="" @submit.prevent="signin">

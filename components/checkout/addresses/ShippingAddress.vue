@@ -23,7 +23,7 @@
 
 </div>
 
-<a href="" @click.prevent="selecting = true"> Change Shipping Address </a> <br>
+<a v-if="selectedAddress != null" href="" @click.prevent="selecting = true"> Change Shipping Address </a> <br>
 <a href="" @click.prevent="creating = true"> Add an address</a>
  </div>
 
