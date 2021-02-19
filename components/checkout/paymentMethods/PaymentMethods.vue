@@ -5,12 +5,13 @@
     </template>
      <template v-else-if="creating">
     Create Payment method
-    <PaymentMethodCreator class="py-4" @cancel="creating = false" @added="created"/>
+   
+    <PaymentMethodCreator class="py-4" @cancel="creating = false" @added="created" :user="user" />
     </template>
    <template v-else>
     <div class=" p-4 mb-6 italic mt-2 rounded-md bg-green-200">
     <template  v-if="selectedPaymentMethod">
-                 {{selectedPaymentMethod.card_type}} :  **** **** **** {{selectedPaymentMethod.last_four}}<br>
+                 {{selectedPaymentMethod.card_type}}  / GCASH<br>
 
     </template>
     </div>
@@ -21,7 +22,7 @@
 </div>
 <br>
 <a href="" @click.prevent="selecting = true" v-if="paymentMethods.length"> Change Payment Method </a> <br>
-<a href="" @click.prevent="creating = true"> Add an Payment Method</a>
+<a href="" @click.prevent="creating = true" v-if="!selecting"> Add an Payment Method</a>
  </div>
 
 
@@ -49,6 +50,10 @@ props: {
     paymentMethods: {
         required: true,
         type: Array
+    },
+    user:{
+        required: true,
+        type: Number
     }
 },
 

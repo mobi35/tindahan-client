@@ -10,14 +10,15 @@
     <table class="min-w-full bg-white">
       <thead class="bg-gray-800 text-white">
         <tr>
-          <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Date Order</th>
-          <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Total</th>
-          <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Order</th>
+          <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Date Order</th>
+          <th class=" text-left py-3 px-4 uppercase font-semibold text-sm">Total</th>
+          <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Order</th>
           <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Status</th>
+            <th class="w-full text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
         </tr>
       </thead>
     <tbody class="text-gray-700">
-<Order v-for="order in orders" :key="order.id" :order="order"/>
+<Order v-for="order in orders" :key="order.id" :order="order" />
 
     </tbody>
     </table>
@@ -87,6 +88,9 @@ async asyncData({app}){
   return {
     orders: response.data
   }
+},
+method:{
+
 }
 }
 </script>

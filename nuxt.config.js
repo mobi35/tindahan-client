@@ -33,6 +33,7 @@ export default {
     { src: '~/plugins/carousel3D.client.js', ssr: false },
     { src: '~/plugins/select.js', ssr: false },
     { src: '~/plugins/image-magnifier.js', ssr: false },
+    { src: '~/plugins/alert.js', ssr: false },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

@@ -29,6 +29,9 @@
   <div class="px-2 cursor-pointer">
     <img class="border-white border-2 rounded-full p-2 h-16 logo" src="https://img.icons8.com/ios-glyphs/60/000000/youtube-play.png"/>
   </div>
+    <div class="px-2 cursor-pointer">
+   <img class="border-white border-2 rounded-full p-2 h-16 logo" src="http://127.0.0.1:8000/logo.ico" />
+   </div>
   </div>
   <div class="flex mt-8 flex-wrap ">
     <div class=" w-full ">
@@ -46,6 +49,8 @@
     <div class="text-white text-center w-full h-32 mt-8">
 <p>  Address: 55 Atty. Pat Senador St. Roosevelt Qc</p>
 <p>  0917-8282343</p>
+
+
     </div>
   </div>
   <div class="h-10 p-2 text-center bg-white w-full bottom-0 absolute tracking-wider">

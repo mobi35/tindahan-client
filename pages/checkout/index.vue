@@ -52,7 +52,7 @@
             <h1 class="ml-2 font-bold uppercase">Payment Method</h1>
           </div>
 
-       <PaymentMethods :payment-methods="paymentMethods" v-model="form.payment_method_id"/>
+    <PaymentMethods :payment-methods="paymentMethods" v-model="form.payment_method_id" :user="$auth.user.id"/>
 
 
 
@@ -95,7 +95,7 @@ export default {
         paymentMethods:[],
         form : {
             address_id: null,
-            payment_method_id :null
+            payment_method_id :1
         },
 
          }
@@ -180,7 +180,7 @@ let paymentMethods = await app.$axios.$get('payment-methods')
 
 return {
     addresses: addresses.data,
-    paymentMethods: paymentMethods.data
+   paymentMethods: paymentMethods.data
 }
 }
 
