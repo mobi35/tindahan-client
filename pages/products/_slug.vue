@@ -14,10 +14,10 @@
   
   <div v-if="form.variation"> 
 
-<inner-image-zoom  class=" object-cover object-center rounded border border-gray-200"  :src="require(`~/assets/testprod/${form.variation.images[0].image_name}`).toString() " />
+<img class=" object-cover object-center rounded border border-gray-200"  :src="`http://localhost:8000/uploads/${form.variation.images[0].image_name}`" />
  
  <div class="flex"> 
-<img v-for="images in form.variation.images" :key="images.key" class="w-1/4  object-cover object-center rounded border border-gray-200"  :src="require(`~/assets/testprod/${images.image_name}`)" />
+<img v-for="images in form.variation.images" :key="images.key" class="w-1/4  object-cover object-center rounded border border-gray-200"  :src="`http://localhost:8000/uploads/${images.image_name}`" />
 
 </div>
 
@@ -26,7 +26,7 @@
 
 <div v-for="prod in product.variations" :key="prod.key"  >
 
- <inner-image-zoom :src="require(`~/assets/testprod/${prod[0].images[0].image_name}`).toString()"/>
+ <img :src="`http://localhost:8000/uploads/${prod[0].images[0].image_name}` "/>
 </div>
 
 </div>
@@ -44,21 +44,18 @@
        <span class="title-font font-medium text-2xl text-gray-900 block" > 
         
          <div v-if="form.variation && form.variation.stock_count > 0 "> 
-         <PriceQuantity :price="product.price" :quantity="form.quantity" />  
-         </div>
+           <div v-if="form.variation.price_varies"> 
+             <PriceQuantity :price="form.variation.price" :quantity="form.quantity" />  
+              </div>
+       
+     
+      
+      
+         </div> 
          <div v-else> 
           {{product.price}}
          </div>
-
-
-   <div  v-if="form.variation && form.variation.stock_count == 0" > 
-      <h1 class="text-gray"> Out of Stock </h1>
-     </div>
-
          </span>
-      
-
-
 
         </div>
         <div >
@@ -147,7 +144,7 @@
 <script>
 import { mapActions } from 'vuex'
 import PriceQuantity from '@/components/globals/PriceQuantity'
-import InnerImageZoom from  'vue-inner-image-zoom'
+
 export default {
  
     data(){
@@ -165,8 +162,8 @@ export default {
             }
         }
     },components:{
-        PriceQuantity,
-        InnerImageZoom
+        PriceQuantity
+
     },
     methods: {
   

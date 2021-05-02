@@ -20,6 +20,8 @@ export const actions = {
 
         if(this.$auth.loggedIn){
             await dispatch('cart/getCart')
+            await dispatch('product/nuxtServerInit')
+           //await dispatch('variation/nuxtServerInit')
         }
 
     }

@@ -5,27 +5,24 @@
       <div class="prod-title">
         <p class="sm:text-sm md:text-base m-2  uppercase text-gray-900 font-bold">   <nuxt-link :to="link">{{product.name}}</nuxt-link></p>
         <p class="uppercase text-sm text-gray-400">
-       
+
         </p>
       </div>
       <div class="prod-img">
 
              <p class="hidden"> {{index = 0}}</p>
         <div v-for="(variation,key) in product.variations"  :key="key" >
-         
+
         <p class="hidden"> {{index++}}</p>
-   
-      <div v-if="index === 1" >  
-       
+
+      <div v-if="index === 1" >
+
          <nuxt-link
       :to="link"
       :key="product.slug"
-      ><img   class="w-full object-cover object-center h-64" :src="require(`~/assets/testprod/${variation[0].images[0].image_name}`)" /> 
-      
+      ><img   class="w-full object-cover object-center h-64" :src="`http://localhost:8000/uploads/${variation[0].images[0].image_name}`" />
          </nuxt-link>
-
-
-      </div>  
+      </div>
 
      </div>
 

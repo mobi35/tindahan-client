@@ -27,8 +27,12 @@
          <nuxt-link
       :to="{ name : 'products-slug', params: {slug:prod.slug}}"
       :key="prod.slug"
-      ><img class="h-64		 w-full" :src="require(`~/assets/testprod/${variation[0].images[0].image_name}`)" /> 
-      
+      >
+      <!-- you can upload image from the assets folder in nuxt
+      <img class="h-64		 w-full" :src="require( `~/assets/testprod/${variation[0].images[0].image_name}`)" /> 
+      -->
+
+       <img class="h-64		 w-full" :src="`http://localhost:8000/uploads/${ variation[0].images[0].image_name}`" /> 
          </nuxt-link>
       </div>  
 
@@ -50,6 +54,7 @@
 <script>
 
 export default {
+
   props:{
     product:{
         required:true,

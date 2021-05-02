@@ -15,7 +15,7 @@
           
          <div class="flex w-full justify-start pr-2 ">
         
-           <div class="sm:w-full md:w-1/6 py-2  " v-for="product in products" :key="product.slug">
+           <div class="sm:w-full md:w-1/2 py-2  " v-for="product in products" :key="product.slug">
              <Product :product="product"/>
         </div>
         </div>

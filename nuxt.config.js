@@ -1,4 +1,9 @@
 export default {
+  env: {
+    baseURL: 'http://gkshop.com/public/api',
+    uploadFolderUrl: 'http://gkshop.com/public/uploads/'
+  },
+
   responsiveLoader: {
     placeholder: true,
     name: 'img/[hash:7]-[width].[ext]',
@@ -28,12 +33,15 @@ export default {
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [
-    '~/plugins/swipe.js'
-   ,
+    '~/plugins/swipe.js',
+    '~/plugins/table.js',
+    '~/plugins/resize.js',
+
+
     { src: '~/plugins/carousel3D.client.js', ssr: false },
     { src: '~/plugins/select.js', ssr: false },
     { src: '~/plugins/image-magnifier.js', ssr: false },
-    { src: '~/plugins/alert.js', ssr: false },
+    { src: '~/plugins/alert.js', ssr: false }
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
@@ -45,8 +53,11 @@ export default {
     '@nuxtjs/tailwindcss',
   ],
 
+
   // Modules (https://go.nuxtjs.dev/config-modules)
-  modules: [  '@nuxtjs/axios',
+  modules: [
+
+   '@nuxtjs/axios',
     '@nuxtjs/auth',
     'nuxt-responsive-loader'
   ],
@@ -75,8 +86,9 @@ export default {
   },
 
   axios:{
-    baseURL: 'http://localhost:8000/api'
+    baseURL: 'http://gkshop.com/public/api'
   },
+
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {

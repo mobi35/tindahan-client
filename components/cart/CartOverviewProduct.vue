@@ -4,7 +4,7 @@
    
             <td class="hidden pb-4 md:table-cell">
               <a href="#">
-                <img :src="require(`~/assets/testprod/${product.images[0].image_name}`)" class="w-20 rounded" alt="Thumbnail">
+                <img :src="`http://localhost:8000/uploads/${product.images[0].image_name}`" class="w-20 rounded" alt="Thumbnail">
               </a>
             </td>
             <td>

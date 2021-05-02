@@ -30,7 +30,7 @@
 
       {{ category.name }}
 
-      </nuxt-link> 
+      </nuxt-link>
              <br/>
     </template>
 
@@ -38,7 +38,7 @@
 
   </template>
 
-</div> 
+</div>
 
 </template>
 <script>
