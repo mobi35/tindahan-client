@@ -11,8 +11,8 @@
               </div>
 
               <div class="modal-body">
-               
-                 <form @submit.prevent="sendData" method="post" enctype="multipart/form-data"> 
+
+                 <form @submit.prevent="sendData" method="post" enctype="multipart/form-data">
                 <label>Name</label>
               <input v-model="form.name" style="background-color:red;" type = "text"/>
               <br>
@@ -28,22 +28,25 @@
               <option value="3"> L</option>
               <option value="4"> XS</option>
               <option value="5"> XL</option>
+              <option value="6"> 2XL</option>
+              <option value="7"> 2XS</option>
+                <option value="8"> 7</option>
+              <option value="9"> 8</option>
+               <option value="10"> 9</option>
+              <option value="11"> 10</option>
+                <option value="12"> 11</option>
+
           </select>
-            
-            
               <br>
-
-
-
 
  <dropzone id="foo" ref="dropZ" v-on:vdropzone-sending="sendingImage" :options="dropzoneOptions" :destroyDropzone="true"></dropzone>
               <br>
 
-      
+
 
               <button>Save</button>
               </form>
-               
+
                 <slot name="body">
                   default body
                 </slot>
@@ -78,7 +81,7 @@ props:{
   prodId : {
     required : true,
     type: Number
-  }, 
+  },
 }
 ,
 data(){
@@ -96,18 +99,18 @@ data(){
          clickable: true,
             maxFiles: 5,
             parallelUploads: 5,
-         uploadMultiple: true, 
+         uploadMultiple: true,
          acceptedFiles: '.png,.jpg,.pdf'
       }
   }
 },
 methods:{
   sendData(){
-  
+
       this.$refs.dropZ.dropzone.processQueue();
   },
   sendingImage(file, xhr, formData){
- 
+
     formData.append("name", this.form.name);
     formData.append("price", this.form.price);
      formData.append("product_variation_type_id", this.form.product_variation_type_id);

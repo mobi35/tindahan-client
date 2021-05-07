@@ -1,7 +1,7 @@
 <template>
 <div>
   <br><br><br><br>
-  <form @submit.prevent="sendData">
+  <form >
   <label>Name</label>
 <input v-model="name" style="background-color:red;" type = "text"/>
  <br>
@@ -25,7 +25,7 @@
 
 <br>
 
-<button>Save</button>
+<button @click.prevent="sendData()">Save</button>
 </form>
 
  <vue-good-table
@@ -92,12 +92,16 @@ methods:{
         {
           name: this.name,
           slug: this.slug,
-          password: this.description,
-          price : this.price,
+          description: this.description,
+          price : this.price + '00',
           category: this.category
           }
-        )
 
+        )
+  name = ''
+  slug =''
+  description = ''
+  price = ''
 
   }
 },
@@ -131,7 +135,7 @@ data(){
     name: '',
     slug: '',
     description: '',
-    price: 0,
+    price: '',
     category :'',
     categoryDefault: ["burat","kalakot"]
   }

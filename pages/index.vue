@@ -32,7 +32,7 @@ computed: {
 
 async asyncData({ app}){
     let response = await app.$axios.$get(`showvar`)
-      
+
     return {
         product : response.data,
 

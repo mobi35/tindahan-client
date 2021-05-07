@@ -4,7 +4,7 @@ export const state = () => ({
 
 export const getters = {
     categories(state){
-       return state.categories 
+       return state.categories
     }
 }
 
@@ -19,7 +19,7 @@ export const actions = {
         commit('SET_CATEGORIES', response.data)
 
         if(this.$auth.loggedIn){
-            await dispatch('cart/getCart')
+         //   await dispatch('cart/getCart')
             await dispatch('product/nuxtServerInit')
            //await dispatch('variation/nuxtServerInit')
         }

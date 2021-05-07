@@ -1,7 +1,7 @@
 export default {
   env: {
-    baseURL: 'http://gkshop.com/public/api',
-    uploadFolderUrl: 'http://gkshop.com/public/uploads/'
+    baseURL: 'https://mail.adichan.xyz/api',
+    uploadFolderUrl: 'https://mail.adichan.xyz/uploads/'
   },
 
   responsiveLoader: {
@@ -86,7 +86,7 @@ export default {
   },
 
   axios:{
-    baseURL: 'http://gkshop.com/public/api'
+    baseURL: 'https://mail.adichan.xyz/api'
   },
 
 
