@@ -4,7 +4,7 @@ export const state = () => ({
 
 export const getters = {
     products(state){
-       return state.products 
+       return state.products
     }
 }
 
@@ -15,16 +15,15 @@ export const mutations = {
 export const actions = {
     async nuxtServerInit({commit, dispatch}) {
         const response = await this.$axios.get('showAll')
-    
+
         commit('SET_PRODUCTS', response.data)
 
     }, async store({ dispatch }, products ){
-        console.log(products);
+      //  console.log(products);
         let response = await this.$axios.$post('products',
             products
         )
-      
-        dispatch('nuxtServerInit')
+      //  dispatch('nuxtServerInit')
     }
 }
 

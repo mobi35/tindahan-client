@@ -1,7 +1,10 @@
 export default {
   env: {
-    baseURL: 'https://mail.adichan.xyz/api',
-    uploadFolderUrl: 'https://mail.adichan.xyz/uploads/'
+  //  baseURL: 'https://mail.adichan.xyz/api',
+  //  uploadFolderUrl: 'https://mail.adichan.xyz/uploads/'
+
+  baseURL: 'http://127.0.0.1:8000/api',
+    uploadFolderUrl: 'http://127.0.0.1:8000/uploads/'
   },
 
   responsiveLoader: {
@@ -86,7 +89,8 @@ export default {
   },
 
   axios:{
-    baseURL: 'https://mail.adichan.xyz/api'
+   // baseURL: 'http://mail.adichan.xyz/api'
+    baseURL: 'http://127.0.0.1:8000/api'
   },
 
 

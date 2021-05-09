@@ -20,7 +20,7 @@
 <br>
 
 <select v-model="category">
-<option v-for="shit in categories.data" :key="shit.id" :value="shit.name" > {{ shit.name }}</option>
+<option v-for="shit in categories.data" :key="shit.id" :value="shit.slug" > {{ shit.name }}</option>
 </select>
 
 <br>
@@ -83,7 +83,8 @@ export default {
 
 methods:{
    ...mapActions({
-            store: 'product/store'
+            store: 'product/store',
+            updateProducts: 'product/nuxtServerInit',
         }),
 
   sendData(){
@@ -98,10 +99,12 @@ methods:{
           }
 
         )
-  name = ''
-  slug =''
-  description = ''
-  price = ''
+//console.log(this.products)
+this.updateProducts()
+  this.name = null
+  this.slug =null
+  this.description =null
+  this.price = null
 
   }
 },
