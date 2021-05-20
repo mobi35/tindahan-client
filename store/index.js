@@ -19,10 +19,29 @@ export const actions = {
         commit('SET_CATEGORIES', response.data)
 
         if(this.$auth.loggedIn){
+
+            if(this.$auth.user.role == "admin"){
+                //   await dispatch('cart/getCart')
+                   await dispatch('productVariationType/nuxtServerInit')
+                  //await dispatch('variation/nuxtServerInit')
+               }
          //   await dispatch('cart/getCart')
             await dispatch('product/nuxtServerInit')
            //await dispatch('variation/nuxtServerInit')
         }
 
-    }
+
+
+    }, async store({ dispatch }, category ){
+        //  console.log(products);
+          let response = await this.$axios.$post('categories',
+          category
+          )
+        //  dispatch('nuxtServerInit')
+      }, async destroy({ dispatch }, category ){
+        //  console.log(products);
+          let response = await this.$axios.$delete(`categories/${category}`
+          )
+        //  dispatch('nuxtServerInit')
+      }
 }

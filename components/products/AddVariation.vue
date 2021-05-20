@@ -13,38 +13,34 @@
               <div class="modal-body">
 
                  <form @submit.prevent="sendData" method="post" enctype="multipart/form-data">
-                <label>Name</label>
-              <input v-model="form.name" style="background-color:red;" type = "text"/>
+                <label>Size</label>
+            <select v-model="form.name">
+          <option value="XS">Extra Small</option>
+          <option value="S">Small</option>
+           <option value="M">Medium</option>
+            <option value="L">Large</option>
+            <option value="XL">Extra Large</option>
+            <option value="2XL">2XL</option>
+            <option value="3XL">3XL</option>
+            </select>
+
               <br>
 
                 <label>Price</label>
 
               <input v-model="form.price" style="background-color:red;" type = "text"/>
             <br><br>
-
-          <select style="background-color:red;" v-model="form.product_variation_type_id">
-              <option value="1"> S</option>
-              <option value="2">  M</option>
-              <option value="3"> L</option>
-              <option value="4"> XS</option>
-              <option value="5"> XL</option>
-              <option value="6"> 2XL</option>
-              <option value="7"> 2XS</option>
-                <option value="8"> 7</option>
-              <option value="9"> 8</option>
-               <option value="10"> 9</option>
-              <option value="11"> 10</option>
-                <option value="12"> 11</option>
-
+          <select v-model="form.product_variation_type_id" style="background-color:red;" >
+            <option v-for="data in variationTypes.data" :value="data.id" :key="data.key">{{data.name}} </option>
           </select>
               <br>
 
- <dropzone id="foo" ref="dropZ" v-on:vdropzone-sending="sendingImage" :options="dropzoneOptions" :destroyDropzone="true"></dropzone>
+ <dropzone id="foo" ref="dropZ"  v-on:vdropzone-success-multiple="successImage" v-on:vdropzone-sending="sendingImage" :options="dropzoneOptions" :destroyDropzone="true"></dropzone>
               <br>
 
 
 
-              <button>Save</button>
+              <button @click="$emit('update',newValue)">Save</button>
               </form>
 
                 <slot name="body">
@@ -60,6 +56,7 @@
                   <button class="modal-default-button" @click="$emit('close')">
                     OK
                   </button>
+
                 </slot>
               </div>
             </div>
@@ -71,8 +68,9 @@
 <script>
 import Dropzone from 'nuxt-dropzone'
 import 'nuxt-dropzone/dropzone.css'
-
+import axios from 'axios'
 export default {
+
   components: {
   Dropzone
 },
@@ -82,10 +80,20 @@ props:{
     required : true,
     type: Number
   },
+  variationTypes : {
+    required : true,
+    type: Object
+  },
+  slug : {
+    required:true,
+    type:String
+  }
 }
 ,
 data(){
   return {
+    token : '',
+    newValue : null,
     form : {
       name : '',
       price : '',
@@ -93,8 +101,11 @@ data(){
 
       product_variation_type_id : 0
     }  ,dropzoneOptions: {
-        url: `${process.env.baseURL}/storeVariation`,
+        url: `${process.env.baseURL}/variations`,
       //   url: 'https://httpbin.org/post',
+      headers : {
+         Authorization: this.$auth.$storage._state['_token.local']
+      },
         autoProcessQueue: false,
          clickable: true,
             maxFiles: 5,
@@ -104,17 +115,29 @@ data(){
       }
   }
 },
+
 methods:{
   sendData(){
-
       this.$refs.dropZ.dropzone.processQueue();
   },
-  sendingImage(file, xhr, formData){
+  successImage(files, response){
 
+    alert(token)
+    alert("added");
+  //  location.reload()
+  },
+  sendingImage(file, xhr, formData){
     formData.append("name", this.form.name);
     formData.append("price", this.form.price);
      formData.append("product_variation_type_id", this.form.product_variation_type_id);
     formData.append("product_id", this.prodId);
+
+let repa = axios.get(`${process.env.baseURL}/getVariations?slug=${this.slug}`)
+  .then((response) => {
+    console.log(response.data);
+    this.newValue = response.data;
+  })
+//console.log(repa)
 
   }
 }
