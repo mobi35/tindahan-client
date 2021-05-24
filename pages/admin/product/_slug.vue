@@ -1,11 +1,13 @@
 <template>
   <div>
+   
     <br><br><br><br><br>
+     <nuxt-link to="/admin/product">Back</nuxt-link>
       <h1>{{this.product}}</h1>
        <h1>{{this.price}}</h1>
 
 
-<AddVariation :slug="slug" :variationTypes="variationTypes" :prodId="productId" v-if="showModal"  @close="showModal = false;">
+<AddVariation @updateClick="UpdateIt"  :slug="slug" :variationTypes="variationTypes" :prodId="productId" v-if="showModal"  @close="showModal = false;">
 <div slot="body">
   <h1></h1>
 </div>
@@ -17,12 +19,19 @@
 <EditVariation @updateClick="UpdateIt" :variationType="variationType" v-if="editModal" :variation="selectedProductVariation" @close="editModal = false" :modal="editModal">
 
 </EditVariation>
- <vue-good-table
+<StockVariation :variationId="currentId" @close="stockModal = false" :stockModal="stockModal">
+
+</StockVariation>
+
+<button @click.prevent="variationsGet">View</button>
+<div > 
+   <client-only>
+ <vue-good-table v-if="showData"
       :search-options="{
         enabled: true
       }"
       :columns="columns"
-      :rows="variations"
+      :rows="productVariation.data"
       :pagination-options="{
     enabled: true,
     mode: 'records',
@@ -46,10 +55,14 @@
        <button @click="deleteVariation(`${props.row.id}`)">delete</button>
 
          <button @click="editVar(`${props.row.id}`)">edit</button>
+
+          <button @click="stocks(`${props.row.id}`)">add stock</button>
     </span>
   </template>
 
  </vue-good-table>
+  </client-only>
+</div>
 
   </div>
 </template>
@@ -58,23 +71,28 @@
 import {mapGetters} from 'vuex'
 import {mapActions} from 'vuex'
 import axios from 'axios'
+import StockVariation from '~/components/productVariation/Stock'
 import EditVariation from '~/components/productVariation/Edit'
 import AddVariation from '~/components/products/AddVariation'
 export default {
 computed:{
   ...mapGetters({
     selectedProductVariation : 'productVariation/selectedProductVariation',
-    variationType : 'productVariationType/productVariationType'
+    variationType : 'productVariationType/productVariationType',
+    productVariation : 'productVariation/productVariation'
   })
 },
 components:{
-  AddVariation,EditVariation
+  AddVariation,EditVariation,StockVariation
 },
 data(){
 return {
   variations : {},
   showModal : false,
+  currentId : "0",
   editModal : false,
+  stockModal : false,
+  showData : false,
   slug : '',
   columns: [
         {
@@ -100,28 +118,35 @@ async asyncData({ params, app}){
     let response = await app.$axios.$get(`products/${params.slug}`)
     let repa = await app.$axios.$get(`getVariations?slug=${params.slug}`)
     let variationTypes = await app.$axios.$get(`variationtype`);
-    return {
+
+   return {
      product : response.data.name,
       price :response.data.price,
        description : response.data.description,
         productSlug : response.data.slug,
         productId : response.data.id,
-        variations : repa.data,
+       
         variationTypes : variationTypes,
         slug : params.slug
     }
 },
+mounted(){
+ this.getProdVariation(this.slug)
+
+},
 methods:{
   UpdateIt(){
-   // alert("yes emitted")
-   alert(this.slug)
-      let repa =  axios.get(`http://127.0.0.1:8000/api/getVariations?slug=${this.slug}`)
-      console.log(this.slug)
-  this.variations = repa.data
+    this.editModal = false;
+   this.getProdVariation(this.slug)
   },
   ...mapActions({
-    editVariation : 'productVariation/Edit'
+    editVariation : 'productVariation/Edit',
+    destroyVar : 'productVariation/destroy',
+    getProdVariation : 'productVariation/getProdVariation'
   }),
+  variationsGet(){
+    this.showData = true;
+  },
    editVar(id){
      this.editVariation(id).then(e => {
         this.editModal = true;
@@ -130,15 +155,13 @@ methods:{
 
 
   },
+  stocks(id){
+    this.currentId = id
+this.stockModal = true;
+  },
   deleteVariation(id){
-       let response =  axios.post(`http://127.0.0.1:8000/api/deleteVariation`,{
-       'id' :  id
-       })
-       .then(function (response) {
-  })
-  .catch(function (error) {
-  });
-      // console.log(response)
+     this.destroyVar(id)
+      this.getProdVariation(this.slug)
   }
 }
 

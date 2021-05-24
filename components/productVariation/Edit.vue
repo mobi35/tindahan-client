@@ -68,7 +68,7 @@ methods : {
   }),
   EditVariation(id){
     this.updateVar(this.form )
-  this.$emit('updateClick')
+ this.$emit('updateClick')
   }
 }
 }

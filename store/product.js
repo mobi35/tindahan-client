@@ -43,6 +43,12 @@ export const actions = {
               products
           )
         //  dispatch('nuxtServerInit')
+      },async put({ dispatch }, id ){
+          let response = await this.$axios.$put(`best/${id}`
+          )
+        //  dispatch('nuxtServerInit')
+      },async destroy({dispatch},id){
+        let response = await this.$axios.$delete(`products/${id}`)
       }
 }
 

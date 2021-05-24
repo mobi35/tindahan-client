@@ -23,6 +23,7 @@ export const actions = {
             if(this.$auth.user.role == "admin"){
                 //   await dispatch('cart/getCart')
                    await dispatch('productVariationType/nuxtServerInit')
+               //    await dispatch('stocks/nuxtServerInit')
                   //await dispatch('variation/nuxtServerInit')
                }
          //   await dispatch('cart/getCart')

@@ -166,7 +166,8 @@ methods:{
       // eslint-disable-next-line no-unused-vars
       const response =  axios.post(`${process.env.baseURL}/sizeUpload`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          Authorization: this.$auth.$storage._state['_token.local']
         }
       }).then((response) => {
         alert("done")
@@ -207,15 +208,17 @@ methods:{
   //  console.log(this.products.data)
   },
   deleteProduct(id){
-    axios.delete(
-      `${process.env.baseURL}/products/${id}`
-      )
+
+    this.delete(id)
+    this.serverData()
   },
    ...mapActions({
             store: 'product/store',
             patch: 'product/patch',
+            delete : 'product/destroy',
             updateProducts: 'product/nuxtServerInit',
-            serverData : 'product/serverData'
+            serverData : 'product/serverData',
+            bestseller : 'product/put'
         }),
 
   sendData(){
@@ -250,9 +253,7 @@ this.serverData()
 
   },
   makeBest(id){
-      axios.put(
-      `${process.env.baseURL}/best/${id}`
-      )
+      this.bestseller(id)
       this.serverData()
   }
 },created(){

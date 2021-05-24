@@ -121,10 +121,8 @@ methods:{
       this.$refs.dropZ.dropzone.processQueue();
   },
   successImage(files, response){
-
-    alert(token)
+ this.$emit('updateClick')
     alert("added");
-  //  location.reload()
   },
   sendingImage(file, xhr, formData){
     formData.append("name", this.form.name);
@@ -132,11 +130,6 @@ methods:{
      formData.append("product_variation_type_id", this.form.product_variation_type_id);
     formData.append("product_id", this.prodId);
 
-let repa = axios.get(`${process.env.baseURL}/getVariations?slug=${this.slug}`)
-  .then((response) => {
-    console.log(response.data);
-    this.newValue = response.data;
-  })
 //console.log(repa)
 
   }
